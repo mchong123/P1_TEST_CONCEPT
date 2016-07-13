@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+	xmlns:fault="http://mdwcorp.falabella.com/common/schema/fault"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://mdwcorp.falabella.com/common/schema/fault"
+	targetNamespace="http://mdwcorp.falabella.com/common/schema/fault"
+	elementFormDefault="qualified" 
+	attributeFormDefault="unqualified" 
+	version="1.0">
+	
+	<element name="Fault"/>
+	<complexType name="anyNode_TYPE">
+		<complexContent mixed="true">
+			<restriction base="xsd:anyType">
+				<sequence>
+					<any processContents="skip" minOccurs="0"
+						maxOccurs="unbounded" />
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="infError_TYPE"><!-- datosErrorType -->
+		<sequence>
+		    <element name="level" type="xsd:string" /><!--  nivel-->
+		    <element name="serviceId" type="xsd:string" /><!-- idServicio -->
+		    <element name="code" type="xsd:string" /><!-- codigoError -->
+		    <element name="description" type="xsd:string" /><!-- descripcionError -->
+			<element name="bodyInput" type="tns:anyNode_TYPE" nillable="true" /><!--bodyEntrada  -->
+			<element name="bodyOutput" type="tns:anyNode_TYPE" nillable="true"/><!--bodySalida  -->
+			<element name="nodeFault" type="tns:anyNode_TYPE" nillable="true"/><!-- nodoFault -->
+		</sequence>
+	</complexType>
+
+	<complexType name="listError_TYPE"><!-- refactor listaErroresType  -->
+		<sequence>
+		    <element name="error" type="tns:infError_TYPE" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="Fault_TYPE"><!-- refactor  datosFalabellaFaultType-->
+		<sequence>
+			<element name="soaComponet" type="fault:SOAComponent_TYPE"/><!-- elemento nuevo -->
+		    <element name="code" type="xsd:string" /><!--   codigoError -->
+		    <element name="description" type="xsd:string" /><!--   descripcionError-->
+		    <element name="serviceId" type="xsd:string" /><!-- serviceId idServicioProxy -->
+		    <element name="operation" type="xsd:string" /><!--  operacion-->
+		    <element name="executionStartDate" type="xsd:dateTime" /><!--  fechaInicioEjecucion -->
+			<element name="executionEndDate" type="xsd:dateTime" /><!--  fechaFinalEjecucion-->
+			<element name="transactionId" type="xsd:string" /><!--  idTransaccion-->
+			<element name="businessId" type="xsd:string"/><!-- campo nuevo -->
+			<element name="errorType" type="fault:Error_TYPE" /><!--  tipoError-->
+			<element name="criticality" type="fault:Criticality_TYPE"/><!-- campo nuevo -->
+			<element name="errorNode" type="xsd:string" /> <!-- nodoError  -->
+			
+			<!-- campos no definidos en xsd pero necesarios -->
+			
+			<element name="pathError" type="xsd:string" />
+			<element name="listError" type="tns:listError_TYPE" minOccurs="0" /><!--  listaErrores-->
+			<element name="bodyInputProxy" type="tns:anyNode_TYPE" minOccurs="0" /><!-- bodyEntradaProxy -->
+			<element name="aditionalInfo" type="tns:anyNode_TYPE" minOccurs="0" /><!-- datosAdicionales -->
+		</sequence>
+	</complexType>
+
+	<complexType name="FalabellaFaultResponse_TYPE"><!-- FalabellaFaultResponseType -->
+		<sequence>
+		    <element name="FalabellaFaultResponse" type="tns:Fault_TYPE" />
+		</sequence>
+	</complexType>
+
+	<complexType name="FalabellaFault_TYPE">
+		<sequence>
+			<element name="code" type="string" maxOccurs="1" minOccurs="1"/><!-- codigo -->
+			<element name="description" type="string" maxOccurs="1" minOccurs="1"/><!-- description -->
+		</sequence>
+	</complexType>
+	
+	<simpleType name="SOAComponent_TYPE">
+		<restriction base="xsd:string">
+			<enumeration value="MDW-BPEL"/>
+			<enumeration value="MDW-BPM"/>
+			<enumeration value="MDW-OSB"/>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="Error_TYPE">
+		<restriction base="xsd:string">
+			<enumeration value="Functional"/>
+			<enumeration value="Technical"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Criticality_TYPE">
+		<restriction base="xsd:string">
+			<enumeration value="Low"/>
+			<enumeration value="Medium"/>
+			<enumeration value="High"/>
+			<enumeration value="Severe"/>
+		</restriction>
+	</simpleType>
+
+</schema>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:resp="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Resp-v2016.04"
+	targetNamespace="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Resp-v2016.04"
+	elementFormDefault="qualified">
+
+
+	<xsd:element name="ListaempleadosLoginValidarRespParam" type="resp:ListaempleadosLoginValidarRespParam_TYPE" />
+
+	<xsd:complexType name="ListaempleadosLoginValidarRespParam_TYPE">
+		<xsd:sequence>
+			<xsd:element name="contrato" type="resp:ContratoTarjetaCredito_TYPE"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="cliente" type="resp:Cliente_TYPE"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="fechaAlta" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="fechaBaja" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="indicadorSituacion" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="fechaResolucion" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="codigoEstado" type="xsd:integer"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="indicadorBloqueoOperaciones" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="codigoProducto" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="codigoSubproducto" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="formaPago" type="xsd:integer"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="grupoLiquidacion" type="xsd:integer"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="iban" type="xsd:string" minOccurs="0"
+				maxOccurs="1" />
+			<xsd:element name="cuentaCargo" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="nombreBanco" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="viaBanco" type="xsd:string" minOccurs="0"
+				maxOccurs="1" />
+			<xsd:element name="codigoPostalBanco" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="poblacionBanco" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="provinciaBanco" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="detalleContratoMoneda" type="resp:DetalleContrato_TYPE"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="oficinaGestora" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="codigoMonedaCuentaCargo" type="xsd:integer"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="indicadorCuentaEmpresa" type="xsd:integer"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="tipoTarjeta" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="domiciliacionCargoCredito" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="bloqueoConsulta" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="condicionEconomica" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="codigoConvenio" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="tipoBonificacion" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="codigoPromocion" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="indicadorRiesgo" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="tratamientoSaldoAcreedor" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="codigoFormato" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="motivoBaja" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="grupoCuota" type="xsd:integer"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="admisionPeriodificacionCuota" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="numeroMeses" type="xsd:integer"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="restriccionEmisionExtracto" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="facturacionesPorEmitir" type="xsd:integer"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="indicadorNombreEmpresaEstampacion"
+				type="xsd:integer" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="nombreEmpresa" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ibanCuentaCargo2" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="cuentaCargo2" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="claveMonedaCuenta2" type="xsd:integer"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="formaPagoTemporal" type="xsd:integer"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="fechaInicioPagoTemporal" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="fechaFinPagoTemporal" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="controConcurrencia" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="nivelSeguridad" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="codigoEstructuraBusiness" type="xsd:integer"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="tipoRol" type="xsd:string" minOccurs="0"
+				maxOccurs="1" />
+			<xsd:element name="indicadorLimiteUnico" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+		
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContratoTarjetaCredito_TYPE">
+		<xsd:sequence>
+			<xsd:element name="codigoEntidad" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="centroAltaContrato" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="numeroContrato" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Cliente_TYPE">
+		<xsd:sequence>
+			<xsd:element name="codigoCliente" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="tipoDocumento" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="numeroDocumento" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="tipoCliente" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="subTipoCliente" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="nombres" type="xsd:string" minOccurs="0"
+				maxOccurs="1" />
+			<xsd:element name="apellidoPaterno" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="apellidoMaterno" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="razonSocial" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DetalleContrato_TYPE">
+		<xsd:sequence>
+			<xsd:element name="codigoMoneda" type="xsd:integer"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="limiteContrato" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="limiteCreditoCompraCuotas" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="limiteCreditoGlobal" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="limiteCreditoGlobalCompraCuotas" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="porcentajePagoAplazado" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="importeFijoPagoAplazado" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="limiteCreditoCuentaTemporal" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="porcentajePagoTemporal" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="importeFijoPagoTemporal" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="fechaInicial" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="fechaFinal" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="saldoPendiente" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="mesActual" type="xsd:float" minOccurs="0"
+				maxOccurs="1" />
+			<xsd:element name="saldoCompra" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="saldoAutorizado" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="proximoRecibo" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="reciboEmitido" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="reciboAnterior" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="transferenciaBanco" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="saldoPendienteMesActual" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="total" type="xsd:float" minOccurs="0"
+				maxOccurs="1" />
+			<xsd:element name="numeroSaldoCompraCuotas" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="numeroSaldoAutorizado" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="saldoPendienteImpago" type="xsd:float"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="numeroReciboImpagos" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+
+
+
+</xsd:schema>
