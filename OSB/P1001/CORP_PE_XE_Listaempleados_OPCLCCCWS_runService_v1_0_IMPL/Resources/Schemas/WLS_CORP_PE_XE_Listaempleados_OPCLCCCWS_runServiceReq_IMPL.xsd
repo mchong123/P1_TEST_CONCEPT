@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:req="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04"
+	targetNamespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04"
+	elementFormDefault="qualified">
+
+	<xsd:element name="XEListaempleadosOPCLCCCWSrunServiceReqParam" type="req:XEListaempleadosOPCLCCCWSrunServiceReqParam_TYPE" />
+
+	<xsd:complexType name="XEListaempleadosOPCLCCCWSrunServiceReqParam_TYPE">
+		<xsd:sequence>
+			<xsd:element name="usuario" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="clave" type="xsd:string" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

@@ -79,9 +79,6 @@
 			<xs:enumeration value="SAB"/>
 			<xs:enumeration value="WEB_PORTAL"/>
 			<xs:enumeration value="BATCH"/>
-			<xs:enumeration value="App-GSVendedor"/>
-			<xs:enumeration value="QuickPay"/>
-			<xs:enumeration value="DAD"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>

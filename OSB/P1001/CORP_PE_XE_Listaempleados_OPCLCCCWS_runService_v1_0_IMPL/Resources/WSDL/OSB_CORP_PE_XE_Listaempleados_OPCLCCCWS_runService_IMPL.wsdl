@@ -1,0 +1,66 @@
+<definitions targetNamespace="http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice" xmlns:fault="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04" xmlns:resp="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04">
+
+	<types>
+		<xsd:schema>
+			<xsd:import schemaLocation="../Schemas/OSB_CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_IMPL_Req.xsd" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04"/>
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import schemaLocation="../Schemas/OSB_CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_IMPL_Resp.xsd" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04"/>
+		</xsd:schema>
+
+		<xsd:schema>
+			<xsd:import schemaLocation="../../../UT_BCO_PE_EsquemasComunes_v1.0/Resources/Schemas/MdwCorp_Common_clientService.xsd" namespace="http://mdwcorp.falabella.com/common/schema/clientservice"/>
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import schemaLocation="../../../UT_BCO_PE_EsquemasComunes_v1.0/Resources/Schemas/MdwCorp_Common_soapFault.xsd" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+		</xsd:schema>
+	</types>
+
+	<message name="XEListaempleadosOPCLCCCWSrunServiceMsgReq">
+		<part name="XEListaempleadosOPCLCCCWSrunServiceReqParam" element="req:XEListaempleadosOPCLCCCWSrunServiceReqParam"/>
+	</message>
+
+	<message name="XEListaempleadosOPCLCCCWSrunServiceMsgResp">
+		<part name="XEListaempleadosOPCLCCCWSrunServiceRespParam" element="resp:XEListaempleadosOPCLCCCWSrunServiceRespParam"/>
+	</message>
+
+	<message name="FaultMsg">
+		<part name="FaultMsg" element="fault:Fault"/>
+	</message>
+	
+	<message name="ClientService">
+		<part name="clienteService" element="cs:ClientService"/>
+	</message>
+	
+	<portType name="XEListaempleadosOPCLCCCWSrunServicePt">
+		<operation name="XEListaempleadosOPCLCCCWSrunServiceOp">
+			<input message="tns:XEListaempleadosOPCLCCCWSrunServiceMsgReq"/>
+			<output message="tns:XEListaempleadosOPCLCCCWSrunServiceMsgResp"/>
+			<fault message="tns:FaultMsg" name="FaultMsg"/>
+		</operation>
+	</portType>
+
+	<binding name="XEListaempleadosOPCLCCCWSrunServiceBinding" type="tns:XEListaempleadosOPCLCCCWSrunServicePt">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="XEListaempleadosOPCLCCCWSrunServiceOp">
+			<soap:operation style="document" soapAction="http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0/Op"/>
+			<input>
+				<soap:body use="literal" parts="XEListaempleadosOPCLCCCWSrunServiceReqParam"/>
+				<soap:header message="tns:ClientService" use="literal" part="clienteService"/>
+			</input>
+			<output>
+				<soap:body use="literal" parts="XEListaempleadosOPCLCCCWSrunServiceRespParam"/>
+			</output>
+			<fault name="FaultMsg">
+				<soap:fault name="FaultMsg" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+
+	<service name="XEListaempleadosOPCLCCCWSrunServiceServicePRD">
+		<port name="XEListaempleadosOPCLCCCWSrunServicePortPRD" binding="tns:XEListaempleadosOPCLCCCWSrunServiceBinding">
+			<soap:address location="http://localhost:8001/Listaempleados/Login/Validar/v1.0"/>
+		</port>
+	</service>
+
+</definitions>

@@ -1,0 +1,212 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="XEListaempleadosOPCLCCCWSrunServiceServicePRD" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="file:/D:/GH/P1_TEST_CONCEPT/APP/CORP_PE_XE_Listaempleados_OPCLCCCWS_runService-v1_0_APP/CORP_PE_XE_Listaempleados_OPCLCCCWS_runServiceEJB/public_html/WEB-INF/WSDL/WLS_CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_IMPL.wsdl" service="{http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0}XEListaempleadosOPCLCCCWSrunServiceServicePRD">
+                  <model name="{http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0}wsdl" xmlns="http://oracle.com/ws/model">
+                     <types xmlns="http://oracle.com/oracle/webservices/mdds">
+                        <enumeration namespace="http://mdwcorp.falabella.com/common/schema/clientservice" localPart="Country_TYPE" xsdType="string" xmlns="">
+                           <value value="AR"/>
+                           <value value="BR"/>
+                           <value value="CL"/>
+                           <value value="CO"/>
+                           <value value="PE"/>
+                           <value value="UY"/>
+                        </enumeration>
+                        <complexType elementQualified="true" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" localPart="RespuestaValidacion_TYPE" prefix="resp" xmlns="">
+                           <sequence minOccurs="1" maxOccurs="1">
+                              <part name="estadoUsuario" required="false" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="integer"/>
+                              </part>
+                           </sequence>
+                        </complexType>
+                        <complexType elementQualified="true" namespace="http://mdwcorp.falabella.com/common/schema/clientservice" localPart="ClientService_TYPE" prefix="cs" xmlns="">
+                           <sequence minOccurs="1" maxOccurs="1">
+                              <part name="country" required="true" namespace="http://mdwcorp.falabella.com/common/schema/clientservice" elementQualified="true">
+                                 <type namespace="http://mdwcorp.falabella.com/common/schema/clientservice" localPart="Country_TYPE"/>
+                              </part>
+                              <part name="commerce" required="true" namespace="http://mdwcorp.falabella.com/common/schema/clientservice" elementQualified="true">
+                                 <type namespace="http://mdwcorp.falabella.com/common/schema/clientservice" localPart="Commerce_TYPE"/>
+                              </part>
+                              <part name="channel" required="true" namespace="http://mdwcorp.falabella.com/common/schema/clientservice" elementQualified="true">
+                                 <type namespace="http://mdwcorp.falabella.com/common/schema/clientservice" localPart="Channel_TYPE"/>
+                              </part>
+                              <part name="storeId" required="false" namespace="http://mdwcorp.falabella.com/common/schema/clientservice" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="terminalId" required="false" namespace="http://mdwcorp.falabella.com/common/schema/clientservice" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="date" required="false" namespace="http://mdwcorp.falabella.com/common/schema/clientservice" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="date"/>
+                              </part>
+                              <part name="hour" required="false" namespace="http://mdwcorp.falabella.com/common/schema/clientservice" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="time"/>
+                              </part>
+                           </sequence>
+                        </complexType>
+                        <complexType elementQualified="true" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" localPart="Retorno_TYPE" prefix="resp" xmlns="">
+                           <sequence minOccurs="1" maxOccurs="1">
+                              <part name="codigo" required="true" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="descripcion" required="true" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                           </sequence>
+                        </complexType>
+                        <enumeration namespace="http://mdwcorp.falabella.com/common/schema/clientservice" localPart="Commerce_TYPE" xsdType="string" xmlns="">
+                           <value value="Banco"/>
+                           <value value="CMR"/>
+                           <value value="Falabella"/>
+                           <value value="Seguros"/>
+                           <value value="Sodimac"/>
+                           <value value="Tottus"/>
+                           <value value="Movil"/>
+                           <value value="Viajes"/>
+                           <value value="Falabella Movil"/>
+                           <value value="CrateAndBarrel"/>
+                           <value value="Telco CMR"/>
+                           <value value="Connect"/>
+                           <value value="Web Movil Falabella"/>
+                           <value value="BackOffice"/>
+                        </enumeration>
+                        <enumeration namespace="http://mdwcorp.falabella.com/common/schema/clientservice" localPart="Channel_TYPE" xsdType="string" xmlns="">
+                           <value value="ASL+"/>
+                           <value value="B2B"/>
+                           <value value="B2C"/>
+                           <value value="Cardif"/>
+                           <value value="Comercio Adherido"/>
+                           <value value="CRM"/>
+                           <value value="Fono Compras"/>
+                           <value value="Homy"/>
+                           <value value="IVR"/>
+                           <value value="Kiosco"/>
+                           <value value="Mobile"/>
+                           <value value="Mobile-APP"/>
+                           <value value="Mobile-WEB"/>
+                           <value value="Portal"/>
+                           <value value="Presencial"/>
+                           <value value="POS"/>
+                           <value value="Punto de Venta"/>
+                           <value value="SIX"/>
+                           <value value="UXPOS"/>
+                           <value value="Venta-Empresa"/>
+                           <value value="Web"/>
+                           <value value="Web CMR"/>
+                           <value value="Web-PAC"/>
+                           <value value="USSD"/>
+                           <value value="Punto de Venta"/>
+                           <value value="CRM"/>
+                           <value value="DIM"/>
+                           <value value="PMM"/>
+                           <value value="WMOS"/>
+                           <value value="SRX"/>
+                           <value value="ATG"/>
+                           <value value="OMS"/>
+                           <value value="TRL"/>
+                           <value value="SAB"/>
+                           <value value="WEB_PORTAL"/>
+                           <value value="BATCH"/>
+                        </enumeration>
+                        <complexType elementQualified="true" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" localPart="XEListaempleadosOPCLCCCWSrunServiceRespParam_TYPE" prefix="resp" xmlns="">
+                           <sequence minOccurs="1" maxOccurs="1">
+                              <part name="RespuestaValidacion" required="false" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" elementQualified="true">
+                                 <type namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" localPart="RespuestaValidacion_TYPE" prefix="resp"/>
+                              </part>
+                              <part name="Retorno" required="true" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" elementQualified="true">
+                                 <type namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" localPart="Retorno_TYPE" prefix="resp"/>
+                              </part>
+                           </sequence>
+                        </complexType>
+                        <complexType elementQualified="true" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04" localPart="XEListaempleadosOPCLCCCWSrunServiceReqParam_TYPE" prefix="req" xmlns="">
+                           <sequence minOccurs="1" maxOccurs="1">
+                              <part name="usuario" required="true" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="clave" required="true" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                           </sequence>
+                        </complexType>
+                        <types-in-elements/>
+                     </types>
+                     <service name="{http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0}XEListaempleadosOPCLCCCWSrunServiceServicePRD">
+                        <port name="XEListaempleadosOPCLCCCWSrunServicePortPRD" binding="{http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0}XEListaempleadosOPCLCCCWSrunServiceBinding" portType="{http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0}XEListaempleadosOPCLCCCWSrunServicePt">
+                           <soap addressUrl="http://localhost:8001/XE/Listaempleados/OPCLCCCWS/runService/v1.0" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="XEListaempleadosOPCLCCCWSrunServiceOp">
+                              <soap soapAction="http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0/Op" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name="" message="{http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0}XEListaempleadosOPCLCCCWSrunServiceMsgReq">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="false" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04" localPart="XEListaempleadosOPCLCCCWSrunServiceReqParam" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <header style="2" use="1" namespace="http://mdwcorp.falabella.com/common/schema/clientservice" localPart="ClientService" prefix="cs" elementQualified="false" xmlns="">
+                                       <part name="clienteService" required="true" elementQualified="false">
+                                          <type namespace="http://mdwcorp.falabella.com/common/schema/clientservice" localPart="ClientService_TYPE" prefix="cs"/>
+                                       </part>
+                                    </header>
+                                    <part name="XEListaempleadosOPCLCCCWSrunServiceReqParam" required="true" xmlns="">
+                                       <type namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04" localPart="XEListaempleadosOPCLCCCWSrunServiceReqParam_TYPE" prefix="req"/>
+                                    </part>
+                                 </message>
+                              </input>
+                              <output name="" message="{http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0}XEListaempleadosOPCLCCCWSrunServiceMsgResp">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="true" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" localPart="XEListaempleadosOPCLCCCWSrunServiceRespParam" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <part name="XEListaempleadosOPCLCCCWSrunServiceRespParam" required="true" xmlns="">
+                                       <type namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" localPart="XEListaempleadosOPCLCCCWSrunServiceRespParam_TYPE" prefix="resp"/>
+                                    </part>
+                                 </message>
+                              </output>
+                              <fault name="FaultMsg" message="{http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0}FaultMsg">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="true" namespace="http://schemas.xmlsoap.org/soap/envelope/" localPart="Fault" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <part name="fault" required="false" xmlns="">
+                                       <type>
+                                          <complexType elementQualified="true">
+                                             <part name="faultcode" required="false" nillable="true" namespace="http://schemas.xmlsoap.org/soap/envelope/" elementQualified="false">
+                                                <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                                             </part>
+                                             <part name="faultstring" required="false" nillable="true" namespace="http://schemas.xmlsoap.org/soap/envelope/" elementQualified="false">
+                                                <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                                             </part>
+                                             <part name="detail" required="false" nillable="true" namespace="http://schemas.xmlsoap.org/soap/envelope/" elementQualified="false">
+                                                <type>
+                                                   <complexType elementQualified="true">
+                                                      <part name="FaultMsg" required="true" elementQualified="false">
+                                                         <type>
+                                                            <complexType elementQualified="false">
+                                                               <sequence minOccurs="1" maxOccurs="1">
+                                                                  <part name="faultcode" required="false" namespace="http://schemas.xmlsoap.org/soap/envelope/" elementQualified="false">
+                                                                     <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                                                                  </part>
+                                                                  <part name="faultstring" required="false" namespace="http://schemas.xmlsoap.org/soap/envelope/" elementQualified="false">
+                                                                     <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                                                                  </part>
+                                                                  <part name="faultactor" required="false" namespace="http://schemas.xmlsoap.org/soap/envelope/" elementQualified="false">
+                                                                     <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                                                                  </part>
+                                                                  <part name="detail" required="false" namespace="http://schemas.xmlsoap.org/soap/envelope/" elementQualified="false">
+                                                                     <type namespace="http://www.w3.org/2001/XMLSchema" localPart="anyType"/>
+                                                                  </part>
+                                                               </sequence>
+                                                            </complexType>
+                                                         </type>
+                                                      </part>
+                                                   </complexType>
+                                                </type>
+                                             </part>
+                                          </complexType>
+                                       </type>
+                                    </part>
+                                 </message>
+                              </fault>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>

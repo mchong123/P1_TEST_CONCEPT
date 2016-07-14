@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config">
   <ser:coreEntry isProxy="true" isEnabled="true">
     <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
       <con:wsdl ref="CORP_PE_Listaempleados_LoginValidar-V1_0_EXP/Resources/WSDL/CORP_PE_OSB_Listaempleados_Login_Validar"/>
@@ -39,5 +39,190 @@
       <http:inbound-properties/>
     </tran:provider-specific>
   </ser:endpointConfig>
-  <ser:router/>
+  <ser:router errorHandler="_onErrorHandler-779912332124428164-3d0623fe.1559911a2f7.-7d8b">
+    <con:pipeline type="request" name="PipelinePairNode1_request">
+      <con:stage name="validateRequest">
+        <con:context>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Req-v2016.04" prefix="req"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/common/schema/clientservice" prefix="cli"/>
+        </con:context>
+        <con:actions>
+          <con1:validate>
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7e9c</con2:id>
+            <con1:schema ref="CORP_PE_Listaempleados_LoginValidar-V1_0_EXP/Resources/Schemas/CORP_PE_OSB_Listaempleados_Login_ValidarReq"/>
+            <con1:schemaElement xmlns:req="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Req-v2016.04">req:ListaempleadosLoginValidarReqParam</con1:schemaElement>
+            <con1:varName>body</con1:varName>
+            <con1:location>
+              <con2:xpathText>./req:ListaempleadosLoginValidarReqParam</con2:xpathText>
+            </con1:location>
+          </con1:validate>
+          <con1:validate>
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7e83</con2:id>
+            <con1:schema ref="UT_BCO_PE_EsquemasComunes_v1.0/Resources/Schemas/MdwCorp_Common_clientService"/>
+            <con1:schemaElement xmlns:cli="http://mdwcorp.falabella.com/common/schema/clientservice">cli:ClientService</con1:schemaElement>
+            <con1:varName>header</con1:varName>
+            <con1:location>
+              <con2:xpathText>./cli:ClientService</con2:xpathText>
+            </con1:location>
+          </con1:validate>
+        </con:actions>
+      </con:stage>
+      <con:stage name="requestBackup">
+        <con:context>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Req-v2016.04" prefix="req"/>
+        </con:context>
+        <con:actions>
+          <con1:assign varName="body">
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7e5f</con2:id>
+            <con1:expr>
+              <con2:xqueryText>$body/req:ListaempleadosLoginValidarReqParam</con2:xqueryText>
+            </con1:expr>
+          </con1:assign>
+        </con:actions>
+      </con:stage>
+      <con:stage name="setRequestImpl">
+        <con:context>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Req-v2016.04" prefix="req"/>
+        </con:context>
+        <con:actions>
+          <con1:assign varName="requestImpl">
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7dfd</con2:id>
+            <con1:expr>
+              <con2:xqueryTransform>
+                <con2:resource ref="CORP_PE_Listaempleados_LoginValidar-V1_0_EXP/Resources/XQuery/xq_IN_PX_PE_Listaempleados_LoginValidarExp_to_PX_Listaempleados_OPCLCCCWS_runServiceImpl"/>
+                <con2:param name="listaempleadosLoginValidarReqParam1">
+                  <con2:path>$body/req:ListaempleadosLoginValidarReqParam</con2:path>
+                </con2:param>
+              </con2:xqueryTransform>
+            </con1:expr>
+          </con1:assign>
+        </con:actions>
+      </con:stage>
+      <con:stage name="callOut_PX_CORP_PE_XE_Listaempleados_OPCLCCCWS_runServiceImpl">
+        <con:context/>
+        <con:actions>
+          <con1:wsCallout>
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7cfa</con2:id>
+            <con1:service xsi:type="ref:ProxyRef" ref="CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_v1_0_IMPL/ProxyServices/PX_CORP_PE_XE_Listaempleados_OPCLCCCWS_runServiceImpl" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con1:operation>XEListaempleadosOPCLCCCWSrunServiceOp</con1:operation>
+            <con1:request>
+              <con1:body>$requestImpl</con1:body>
+            </con1:request>
+            <con1:response>
+              <con1:body>responseImpl</con1:body>
+            </con1:response>
+            <con1:requestTransform/>
+            <con1:responseTransform>
+              <con1:validate>
+                <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7cde</con2:id>
+                <con1:schema ref="CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_v1_0_IMPL/Resources/Schemas/OSB_CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_IMPL_Resp"/>
+                <con1:schemaElement xmlns:v20="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04">v20:XEListaempleadosOPCLCCCWSrunServiceRespParam</con1:schemaElement>
+                <con1:varName>responseImpl</con1:varName>
+                <con1:location>
+                  <con2:xpathText>.</con2:xpathText>
+                </con1:location>
+              </con1:validate>
+            </con1:responseTransform>
+          </con1:wsCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="response" name="PipelinePairNode1_response">
+      <con:stage name="setResponseExp">
+        <con:context/>
+        <con:actions>
+          <con1:assign varName="responseExp">
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7dcf</con2:id>
+            <con1:expr>
+              <con2:xqueryTransform>
+                <con2:resource ref="CORP_PE_Listaempleados_LoginValidar-V1_0_EXP/Resources/XQuery/xq_OUT_PX_Listaempleados_OPCLCCCWS_runServiceImpl_to_PX_PE_Listaempleados_LoginValidarExp"/>
+                <con2:param name="xEListaempleadosOPCLCCCWSrunServiceRespParam1">
+                  <con2:path>$responseImpl</con2:path>
+                </con2:param>
+              </con2:xqueryTransform>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="body">
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7da1</con2:id>
+            <con1:expr>
+              <con2:xqueryText>element soap-env:Body{
+$responseExp
+}</con2:xqueryText>
+            </con1:expr>
+          </con1:assign>
+        </con:actions>
+      </con:stage>
+      <con:stage name="cleanVariables">
+        <con:context/>
+        <con:actions>
+          <con1:delete varName="requestImpl">
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7ed8</con2:id>
+          </con1:delete>
+          <con1:delete varName="responseImpl">
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7eb1</con2:id>
+          </con1:delete>
+          <con1:delete varName="responseExp">
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7d8d</con2:id>
+          </con1:delete>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="error" name="_onErrorHandler-779912332124428164-3d0623fe.1559911a2f7.-7d8b">
+      <con:stage name="logErrorTecnicoExp">
+        <con:context/>
+        <con:actions>
+          <con3:log>
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7d6e</con2:id>
+            <con3:logLevel>debug</con3:logLevel>
+            <con3:expr>
+              <con2:xqueryText>$fault</con2:xqueryText>
+            </con3:expr>
+            <con3:message>Error en [PX_CORP_PE_Listaempleados_LoginValidarExp-testErrorLog]</con3:message>
+          </con3:log>
+        </con:actions>
+      </con:stage>
+      <con:stage name="setResponseSoapFault">
+        <con:context/>
+        <con:actions>
+          <con1:replace varName="body" contents-only="true">
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7d25</con2:id>
+            <con1:location>
+              <con2:xpathText>.</con2:xpathText>
+            </con1:location>
+            <con1:expr>
+              <con2:xqueryText><![CDATA[<soapenv:Fault xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<faultcode>
+	{
+	if (data($fault/ctx:errorCode)="BEA-382505") then
+		data("Client")
+	else data("Server")
+	}
+	</faultcode>
+    <faultstring>{concat("Error ",data($fault/ctx:errorCode),":",data($fault/ctx:reason))}</faultstring>
+	<faultactor>
+	{
+	if (data($fault/ctx:errorCode)="BEA-382505") then
+		data($inbound/ctx:transport/ctx:request/http:client-host)
+	else (data("OSB"))
+	}
+	</faultactor>
+	<detail>
+         		{$fault}
+	</detail>
+</soapenv:Fault>]]></con2:xqueryText>
+            </con1:expr>
+          </con1:replace>
+          <con2:reply isError="true">
+            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7d52</con2:id>
+          </con2:reply>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:flow>
+      <con:pipeline-node name="PipelinePairNode1">
+        <con:request>PipelinePairNode1_request</con:request>
+        <con:response>PipelinePairNode1_response</con:response>
+      </con:pipeline-node>
+    </con:flow>
+  </ser:router>
 </xml-fragment>
