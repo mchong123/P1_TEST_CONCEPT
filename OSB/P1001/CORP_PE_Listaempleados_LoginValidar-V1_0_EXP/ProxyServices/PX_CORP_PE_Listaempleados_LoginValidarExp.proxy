@@ -72,10 +72,10 @@
           <con2:varNsDecl namespace="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Req-v2016.04" prefix="req"/>
         </con:context>
         <con:actions>
-          <con1:assign varName="body">
+          <con1:assign varName="requestBackup">
             <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7e5f</con2:id>
             <con1:expr>
-              <con2:xqueryText>$body/req:ListaempleadosLoginValidarReqParam</con2:xqueryText>
+              <con2:xqueryText>$body</con2:xqueryText>
             </con1:expr>
           </con1:assign>
         </con:actions>
