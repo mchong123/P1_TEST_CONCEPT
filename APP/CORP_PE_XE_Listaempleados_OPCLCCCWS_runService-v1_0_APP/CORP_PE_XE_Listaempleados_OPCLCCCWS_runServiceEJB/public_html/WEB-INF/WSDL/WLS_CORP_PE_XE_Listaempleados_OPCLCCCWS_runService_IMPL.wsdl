@@ -45,7 +45,7 @@
 		<operation name="XEListaempleadosOPCLCCCWSrunServiceOp">
 			<soap:operation style="document" soapAction="http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0/Op"/>
 			<input>
-				<soap:body use="literal" parts="XEListaempleadosOPCLCCCWSrunServiceReqParam"/>
+                                    <soap:body use="literal" parts="XEListaempleadosOPCLCCCWSrunServiceReqParam"/>
 				<soap:header message="tns:ClientService" use="literal" part="clienteService"/>
 			</input>
 			<output>
