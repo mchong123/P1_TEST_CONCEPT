@@ -115,12 +115,13 @@
             <con1:responseTransform>
               <con1:validate>
                 <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7cde</con2:id>
-                <con1:schema ref="CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_v1_0_IMPL/Resources/Schemas/OSB_CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_IMPL_Resp"/>
-                <con1:schemaElement xmlns:v20="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04">v20:XEListaempleadosOPCLCCCWSrunServiceRespParam</con1:schemaElement>
+                <con1:schema ref="UT_BCO_PE_EsquemasComunes_v1.0/Resources/Schemas/MdwCorp_Common_soapFault"/>
+                <con1:schemaElement xmlns:v20="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">soapenv:Fault</con1:schemaElement>
                 <con1:varName>responseImpl</con1:varName>
                 <con1:location>
                   <con2:xpathText>.</con2:xpathText>
                 </con1:location>
+                <con1:resultVarName>successFaultExp</con1:resultVarName>
               </con1:validate>
             </con1:responseTransform>
           </con1:wsCallout>
@@ -131,17 +132,35 @@
       <con:stage name="setResponseExp">
         <con:context/>
         <con:actions>
-          <con1:assign varName="responseExp">
-            <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7dcf</con2:id>
-            <con1:expr>
-              <con2:xqueryTransform>
-                <con2:resource ref="CORP_PE_Listaempleados_LoginValidar-V1_0_EXP/Resources/XQuery/xq_OUT_PX_Listaempleados_OPCLCCCWS_runServiceImpl_to_PX_PE_Listaempleados_LoginValidarExp"/>
-                <con2:param name="xEListaempleadosOPCLCCCWSrunServiceRespParam1">
-                  <con2:path>$responseImpl</con2:path>
-                </con2:param>
-              </con2:xqueryTransform>
-            </con1:expr>
-          </con1:assign>
+          <con1:ifThenElse>
+            <con2:id>_ActionId-7122712024700984839-2e1362a3.155fef2d9d1.-7f53</con2:id>
+            <con1:case>
+              <con1:condition>
+                <con2:xqueryText>$successFaultExp = fn:false()</con2:xqueryText>
+              </con1:condition>
+              <con1:actions>
+                <con1:assign varName="responseExp">
+                  <con2:id>_ActionId-7122712024700984839-2e1362a3.155fef2d9d1.-7f51</con2:id>
+                  <con1:expr>
+                    <con2:xqueryTransform>
+                      <con2:resource ref="CORP_PE_Listaempleados_LoginValidar-V1_0_EXP/Resources/XQuery/xq_OUT_PX_Listaempleados_OPCLCCCWS_runServiceImpl_to_PX_PE_Listaempleados_LoginValidarExp"/>
+                      <con2:param name="xEListaempleadosOPCLCCCWSrunServiceRespParam1">
+                        <con2:path>$responseImpl</con2:path>
+                      </con2:param>
+                    </con2:xqueryTransform>
+                  </con1:expr>
+                </con1:assign>
+              </con1:actions>
+            </con1:case>
+            <con1:default>
+              <con1:assign varName="responseExp">
+                <con2:id>_ActionId-7122712024700984839-2e1362a3.155fef2d9d1.-7f2f</con2:id>
+                <con1:expr>
+                  <con2:xqueryText>$responseImpl</con2:xqueryText>
+                </con1:expr>
+              </con1:assign>
+            </con1:default>
+          </con1:ifThenElse>
           <con1:assign varName="body">
             <con2:id>_ActionId-779912332124428164-3d0623fe.1559911a2f7.-7da1</con2:id>
             <con1:expr>

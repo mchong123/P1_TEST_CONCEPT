@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="4d8f9e32-f8ce-480e-ab5c-692a8adfe3a2" activeEnvironment="Default" name="Login_IMPL" resourceRoot="" soapui-version="5.2.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="a2042f1a-89b1-4238-a688-6342f240cbb9" wsaVersion="NONE" name="XEListaempleadosOPCLCCCWSrunServiceBinding" type="wsdl" bindingName="{http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0}XEListaempleadosOPCLCCCWSrunServiceBinding" soapVersion="1_1" anonymous="optional" definition="file:/D:/GH/P1_TEST_CONCEPT/OSB/P1001/CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_v1_0_IMPL/Resources/WSDL/WLS_CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_IMPL.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\GH\P1_TEST_CONCEPT\OSB\P1001\CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_v1_0_IMPL\Resources\WSDL\WLS_CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_IMPL.wsdl"><con:part><con:url>file:\D:\GH\P1_TEST_CONCEPT\OSB\P1001\CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_v1_0_IMPL\Resources\WSDL\WLS_CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_IMPL.wsdl</con:url><con:content><![CDATA[<definitions targetNamespace="http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice" xmlns:fault="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04" xmlns:resp="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="../Schemas/WLS_CORP_PE_XE_Listaempleados_OPCLCCCWS_runServiceReq_IMPL.xsd" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="../Schemas/WLS_CORP_PE_XE_Listaempleados_OPCLCCCWS_runServiceResp_IMPL.xsd" namespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="../../../UT_BCO_PE_EsquemasComunes_v1.0/Resources/Schemas/MdwCorp_Common_clientService.xsd" namespace="http://mdwcorp.falabella.com/common/schema/clientservice"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="../../../UT_BCO_PE_EsquemasComunes_v1.0/Resources/Schemas/MdwCorp_Common_soapFault.xsd" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+    </xsd:schema>
+  </types>
+  <message name="XEListaempleadosOPCLCCCWSrunServiceMsgReq">
+    <part name="XEListaempleadosOPCLCCCWSrunServiceReqParam" element="req:XEListaempleadosOPCLCCCWSrunServiceReqParam"/>
+  </message>
+  <message name="XEListaempleadosOPCLCCCWSrunServiceMsgResp">
+    <part name="XEListaempleadosOPCLCCCWSrunServiceRespParam" element="resp:XEListaempleadosOPCLCCCWSrunServiceRespParam"/>
+  </message>
+  <message name="FaultMsg">
+    <part name="FaultMsg" element="fault:Fault"/>
+  </message>
+  <message name="ClientService">
+    <part name="clienteService" element="cs:ClientService"/>
+  </message>
+  <portType name="XEListaempleadosOPCLCCCWSrunServicePt">
+    <operation name="XEListaempleadosOPCLCCCWSrunServiceOp">
+      <input message="tns:XEListaempleadosOPCLCCCWSrunServiceMsgReq"/>
+      <output message="tns:XEListaempleadosOPCLCCCWSrunServiceMsgResp"/>
+      <fault message="tns:FaultMsg" name="FaultMsg"/>
+    </operation>
+  </portType>
+  <binding name="XEListaempleadosOPCLCCCWSrunServiceBinding" type="tns:XEListaempleadosOPCLCCCWSrunServicePt">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="XEListaempleadosOPCLCCCWSrunServiceOp">
+      <soap:operation style="document" soapAction="http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0/Op"/>
+      <input>
+        <soap:body use="literal" parts="XEListaempleadosOPCLCCCWSrunServiceReqParam"/>
+        <soap:header message="tns:ClientService" use="literal" part="clienteService"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="XEListaempleadosOPCLCCCWSrunServiceRespParam"/>
+      </output>
+      <fault name="FaultMsg">
+        <soap:fault name="FaultMsg" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="XEListaempleadosOPCLCCCWSrunServiceServicePRD">
+    <port name="XEListaempleadosOPCLCCCWSrunServicePortPRD" binding="tns:XEListaempleadosOPCLCCCWSrunServiceBinding">
+      <soap:address location="http://localhost:8001/XE/Listaempleados/OPCLCCCWS/runService/v1.0"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\D:\GH\P1_TEST_CONCEPT\OSB\P1001\CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_v1_0_IMPL\Resources\Schemas\WLS_CORP_PE_XE_Listaempleados_OPCLCCCWS_runServiceReq_IMPL.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:req="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04">
+  <xsd:element name="XEListaempleadosOPCLCCCWSrunServiceReqParam" type="req:XEListaempleadosOPCLCCCWSrunServiceReqParam_TYPE"/>
+  <xsd:complexType name="XEListaempleadosOPCLCCCWSrunServiceReqParam_TYPE">
+    <xsd:sequence>
+      <xsd:element name="usuario" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="clave" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\D:\GH\P1_TEST_CONCEPT\OSB\P1001\CORP_PE_XE_Listaempleados_OPCLCCCWS_runService_v1_0_IMPL\Resources\Schemas\WLS_CORP_PE_XE_Listaempleados_OPCLCCCWS_runServiceResp_IMPL.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:resp="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04">
+  <xsd:element name="XEListaempleadosOPCLCCCWSrunServiceRespParam" type="resp:XEListaempleadosOPCLCCCWSrunServiceRespParam_TYPE"/>
+  <xsd:complexType name="XEListaempleadosOPCLCCCWSrunServiceRespParam_TYPE">
+    <xsd:sequence>
+      <xsd:element name="RespuestaValidacion" type="resp:RespuestaValidacion_TYPE" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="Retorno" type="resp:Retorno_TYPE" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RespuestaValidacion_TYPE">
+    <xsd:sequence>
+      <xsd:element name="estadoUsuario" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Retorno_TYPE">
+    <xsd:sequence>
+      <xsd:element name="codigo" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="descripcion" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\D:\GH\P1_TEST_CONCEPT\OSB\P1001\UT_BCO_PE_EsquemasComunes_v1.0\Resources\Schemas\MdwCorp_Common_clientService.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://mdwcorp.falabella.com/common/schema/clientservice" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ClientService" type="cs:ClientService_TYPE"/>
+  <xs:complexType name="ClientService_TYPE">
+    <xs:sequence>
+      <xs:element name="country" type="cs:Country_TYPE"/>
+      <xs:element name="commerce" type="cs:Commerce_TYPE"/>
+      <xs:element name="channel" type="cs:Channel_TYPE"/>
+      <xs:element name="storeId" type="xs:string" minOccurs="0"/>
+      <xs:element name="terminalId" type="xs:string" minOccurs="0"/>
+      <xs:element name="date" type="xs:date" minOccurs="0"/>
+      <xs:element name="hour" type="xs:time" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Country_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AR"/>
+      <xs:enumeration value="BR"/>
+      <xs:enumeration value="CL"/>
+      <xs:enumeration value="CO"/>
+      <xs:enumeration value="PE"/>
+      <xs:enumeration value="UY"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Commerce_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Banco"/>
+      <xs:enumeration value="CMR"/>
+      <xs:enumeration value="Falabella"/>
+      <xs:enumeration value="Seguros"/>
+      <xs:enumeration value="Sodimac"/>
+      <xs:enumeration value="Tottus"/>
+      <xs:enumeration value="Movil"/>
+      <xs:enumeration value="Viajes"/>
+      <xs:enumeration value="Falabella Movil"/>
+      <xs:enumeration value="CrateAndBarrel"/>
+      <xs:enumeration value="Telco CMR"/>
+      <xs:enumeration value="Connect"/>
+      <xs:enumeration value="Web Movil Falabella"/>
+      <xs:enumeration value="BackOffice"/>
+      <!--Falabella Movil Deprecado-->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Channel_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ASL+"/>
+      <xs:enumeration value="B2B"/>
+      <xs:enumeration value="B2C"/>
+      <xs:enumeration value="Cardif"/>
+      <xs:enumeration value="Comercio Adherido"/>
+      <xs:enumeration value="CRM"/>
+      <xs:enumeration value="Fono Compras"/>
+      <xs:enumeration value="Homy"/>
+      <xs:enumeration value="IVR"/>
+      <xs:enumeration value="Kiosco"/>
+      <xs:enumeration value="Mobile"/>
+      <xs:enumeration value="Mobile-APP"/>
+      <xs:enumeration value="Mobile-WEB"/>
+      <xs:enumeration value="Portal"/>
+      <xs:enumeration value="Presencial"/>
+      <xs:enumeration value="POS"/>
+      <xs:enumeration value="Punto de Venta"/>
+      <xs:enumeration value="SIX"/>
+      <xs:enumeration value="UXPOS"/>
+      <xs:enumeration value="Venta-Empresa"/>
+      <xs:enumeration value="Web"/>
+      <xs:enumeration value="Web CMR"/>
+      <xs:enumeration value="Web-PAC"/>
+      <xs:enumeration value="USSD"/>
+      <xs:enumeration value="Punto de Venta"/>
+      <xs:enumeration value="CRM"/>
+      <xs:enumeration value="DIM"/>
+      <xs:enumeration value="PMM"/>
+      <xs:enumeration value="WMOS"/>
+      <xs:enumeration value="SRX"/>
+      <xs:enumeration value="ATG"/>
+      <xs:enumeration value="OMS"/>
+      <xs:enumeration value="TRL"/>
+      <xs:enumeration value="SAB"/>
+      <xs:enumeration value="WEB_PORTAL"/>
+      <xs:enumeration value="BATCH"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\D:\GH\P1_TEST_CONCEPT\OSB\P1001\UT_BCO_PE_EsquemasComunes_v1.0\Resources\Schemas\MdwCorp_Common_soapFault.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://schemas.xmlsoap.org/soap/envelope/" elementFormDefault="unqualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/">
+  <xs:element name="Fault">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="faultcode" type="xs:string" minOccurs="0"/>
+        <xs:element name="faultstring" type="xs:string" minOccurs="0"/>
+        <xs:element name="faultactor" type="xs:string" minOccurs="0"/>
+        <xs:element name="detail" type="xs:anyType" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://LAPTOP-1:8001/XE/Listaempleados/OPCLCCCWS/runService/v1.0</con:endpoint><con:endpoint>http://localhost:8001/XE/Listaempleados/OPCLCCCWS/runService/v1.0</con:endpoint></con:endpoints><con:operation id="76134fbb-3797-436a-9f9d-c0bcfe8712b0" isOneWay="false" action="http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0/Op" name="XEListaempleadosOPCLCCCWSrunServiceOp" bindingOperationName="XEListaempleadosOPCLCCCWSrunServiceOp" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a79e3b94-9bd1-41a4-a91c-6aaa004ca4df" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8001/XE/Listaempleados/OPCLCCCWS/runService/v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://mdwcorp.falabella.com/common/schema/clientservice" xmlns:v20="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Req/IMPL/v2016.04">\r
+   <soapenv:Header>\r
+      <cli:ClientService>\r
+         <cli:country>?</cli:country>\r
+         <cli:commerce>?</cli:commerce>\r
+         <cli:channel>?</cli:channel>\r
+         <!--Optional:-->\r
+         <cli:storeId>?</cli:storeId>\r
+         <!--Optional:-->\r
+         <cli:terminalId>?</cli:terminalId>\r
+         <!--Optional:-->\r
+         <cli:date>?</cli:date>\r
+         <!--Optional:-->\r
+         <cli:hour>?</cli:hour>\r
+      </cli:ClientService>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <v20:XEListaempleadosOPCLCCCWSrunServiceReqParam>\r
+         <v20:usuario>?</v20:usuario>\r
+         <v20:clave>?</v20:clave>\r
+      </v20:XEListaempleadosOPCLCCCWSrunServiceReqParam>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0/Op"/></con:call></con:operation></con:interface><con:mockService id="16548fe0-5ec3-4afd-8082-3881a6d6af26" port="8001" path="/XE/Listaempleados/OPCLCCCWS/runService/v1.0" host="localhost" name="XEListaempleadosOPCLCCCWSrunServiceBinding MockService" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="XEListaempleadosOPCLCCCWSrunServiceOp" id="59d74bf9-fd41-4a5a-b8a3-1f8e3d8a38b0" interface="XEListaempleadosOPCLCCCWSrunServiceBinding" operation="XEListaempleadosOPCLCCCWSrunServiceOp"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="fe1f4046-324b-4a31-a004-032b993e4cf7" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v20="http://mdwcorp.falabella.com/CORP/PE/WLS/schema/XE/Listaempleados/OPCLCCCWS/runService/Resp/IMPL/v2016.04">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v20:XEListaempleadosOPCLCCCWSrunServiceRespParam>
+         <!--Optional:-->
+         <v20:RespuestaValidacion>
+            <!--Optional:-->
+            <v20:estadoUsuario>1</v20:estadoUsuario>
+         </v20:RespuestaValidacion>
+         <v20:Retorno>
+            <v20:codigo>200</v20:codigo>
+            <v20:descripcion>Login validado con exito</v20:descripcion>
+         </v20:Retorno>
+      </v20:XEListaempleadosOPCLCCCWSrunServiceRespParam>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://mdwcorp.falabella.com/CORP/PE/WLS/wsdl/XE/Listaempleados/OPCLCCCWS/runService/IMPL/v1.0/Op"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

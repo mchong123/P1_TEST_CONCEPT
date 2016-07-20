@@ -59,7 +59,7 @@
 
 	<service name="ListaempleadosLoginValidarService">
 		<port name="ListaempleadosLoginValidarPort" binding="tns:ListaempleadosLoginValidarBinding">
-			<soap:address location="http://localhost:8001/Listaempleados/Login/Validar/v1.0"/>
+			<soap:address location="http://localhost:7001/Listaempleados/Login/Validar/v1.0"/>
 		</port>
 	</service>
 
