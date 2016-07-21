@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:resp="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Resp-v2016.04"
+	targetNamespace="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Resp-v2016.04"
+	elementFormDefault="qualified">
+
+
+	<xsd:element name="ListaempleadosLoginValidarRespParam" type="resp:ListaempleadosLoginValidarRespParam_TYPE" />
+
+	<xsd:complexType name="ListaempleadosLoginValidarRespParam_TYPE">
+		<xsd:sequence>
+			<xsd:element name="RespuestaValidacion" type="resp:RespuestaValidacion_TYPE" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Retorno" type="resp:Retorno_TYPE" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="RespuestaValidacion_TYPE">
+		<xsd:sequence>
+			<xsd:element name="estadoUsuario" type="xsd:integer" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Retorno_TYPE">
+		<xsd:sequence>
+			<xsd:element name="codigo" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="descripcion" type="xsd:string" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	
+	
+
+
+
+</xsd:schema>

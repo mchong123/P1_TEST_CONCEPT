@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:req="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Req-v2016.04"
+	targetNamespace="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Req-v2016.04"
+	elementFormDefault="qualified">
+
+	<xsd:element name="ListaempleadosLoginValidarReqParam" type="req:ListaempleadosLoginValidarReqParam_TYPE" />
+
+	<xsd:complexType name="ListaempleadosLoginValidarReqParam_TYPE">
+		<xsd:sequence>
+			<xsd:element name="usuario" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="clave" type="xsd:string" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

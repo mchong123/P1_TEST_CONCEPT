@@ -1,0 +1,18 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+    
+     targetNamespace="http://mdwcorp.falabella.com/CORP/PE/SOA/wsdl/Listaempleados/Empleado/Login/Validar-v1.1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://mdwcorp.falabella.com/CORP/PE/SOA/wsdl/Listaempleados/Empleado/Login/Validar-v1.1"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    >
+    <plnk:partnerLinkType name="ListaempleadosEmpleadoLoginValidarService">
+        <plnk:role name="ListaempleadosEmpleadoLoginValidarPt">
+            <plnk:portType name="tns:ListaempleadosEmpleadoLoginValidarPt"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://mdwcorp.falabella.com/CORP/PE/SOA/wsdl/Listaempleados/Empleado/Login/Validar-v1.1"
+         location="wsdl/SOA_Listaempleados_Empleado_Login_Validar.wsdl"/>
+</wsdl:definitions>

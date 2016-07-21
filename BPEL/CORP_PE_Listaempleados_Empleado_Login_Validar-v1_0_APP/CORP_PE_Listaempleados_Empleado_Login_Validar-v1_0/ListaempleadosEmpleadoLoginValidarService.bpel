@@ -1,0 +1,212 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Jul 20 13:10:44 COT 2016
+  Author:  LP-1
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="ListaempleadosEmpleadoLoginValidarService"
+               targetNamespace="http://xmlns.oracle.com/CORP_PE_Listaempleados_Empleado_Login_Validar_v1_0_APP/CORP_PE_Listaempleados_Empleado_Login_Validar_v1_0/ListaempleadosEmpleadoLoginValidarService"
+               xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+               xmlns:client="http://xmlns.oracle.com/CORP_PE_Listaempleados_Empleado_Login_Validar_v1_0_APP/CORP_PE_Listaempleados_Empleado_Login_Validar_v1_0/ListaempleadosEmpleadoLoginValidarService"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+               xmlns:ns1="http://mdwcorp.falabella.com/CORP/PE/SOA/wsdl/Listaempleados/Empleado/Login/Validar-v1.1"
+               xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns2="http://mdwcorp.falabella.com/CORP/PE/OSB/wsdl/Listaempleados/Login/Validar-v1.0"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns3="http://mdwcorp.falabella.com/common/schema/clientservice"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns5="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Req-v2016.04"
+         xmlns:ns4="http://mdwcorp.falabella.com/CORP/PE/SOA/schema/Listaempleados/Empleado/Login/Validar/Req-v2014.08"
+         xmlns:ns7="http://mdwcorp.falabella.com/CORP/PE/SOA/schema/Listaempleados/Empleado/Login/Validar/Resp-v2014.09"
+         xmlns:ns6="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Resp-v2016.04"
+         xmlns:ns8="http://schemas.xmlsoap.org/soap/envelope/"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="listaempleadosempleadologinvalidarservice_client" partnerLinkType="ns1:ListaempleadosEmpleadoLoginValidarService" myRole="ListaempleadosEmpleadoLoginValidarPt"/>
+    <partnerLink name="P1001_ValidarLoginEmpleado"
+                 partnerLinkType="ns2:P1001_ValidarLoginEmpleado"
+                 partnerRole="ListaempleadosLoginValidarPt"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="ns1:ListaempleadosEmpleadoLoginValidarMsgReq"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="ns1:ListaempleadosEmpleadoLoginValidarMsgResp"/>
+    <variable name="Invoke_P1001_ValidarLoginEmpleado_ListaempleadosLoginValidarOp_InputVariable"
+              messageType="ns2:ListaempleadosLoginValidarMsgReq"/>
+    <variable name="Invoke_P1001_ValidarLoginEmpleado_ListaempleadosLoginValidarOp_OutputVariable"
+              messageType="ns2:ListaempleadosLoginValidarMsgResp"/>
+    <variable name="ClienteServices" element="ns3:ClientService"/>
+    <variable messageType="ns1:FaultMsg" name="FaultVar"/>
+    <variable name="SiteFault" type="xsd:int"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="Sequence3">
+        <assign name="Fault_Global">
+          <copy>
+            <from expression="'P1001'"/>
+            <to variable="FaultVar" part="FaultMsg"
+                query="/ns8:Fault/faultcode"/>
+          </copy>
+          <copy>
+            <from expression="'SEGURIDAD_LOGIN'"/>
+            <to variable="FaultVar" part="FaultMsg"
+                query="/ns8:Fault/faultactor"/>
+          </copy>
+          <copy>
+            <from expression="'Error se produjo en llamada al servicio P1001'"/>
+            <to variable="FaultVar" part="FaultMsg" query="/ns8:Fault/detail"/>
+          </copy>
+          <copy>
+            <from expression="concat('P1001','-',bpws:getVariableData('SiteFault'))"/>
+            <to variable="FaultVar" part="FaultMsg"
+                query="/ns8:Fault/faultstring"/>
+          </copy>
+        </assign>
+        <reply name="ReplyOut" variable="outputVariable"
+               partnerLink="listaempleadosempleadologinvalidarservice_client"
+               portType="ns1:ListaempleadosEmpleadoLoginValidarPt"
+               operation="ListaempleadosEmpleadoLoginValidarOp"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in ListaempleadosEmpleadoLoginValidarService.wsdl) -->
+    <receive name="receiveInput" partnerLink="listaempleadosempleadologinvalidarservice_client" portType="ns1:ListaempleadosEmpleadoLoginValidarPt" operation="ListaempleadosEmpleadoLoginValidarOp" variable="inputVariable" createInstance="yes"/>
+    <assign name="Setup">
+      <copy>
+        <from expression="'Banco'"/>
+        <to variable="ClienteServices" query="/ns3:ClientService/ns3:commerce"/>
+      </copy>
+      <copy>
+        <from expression="'Web'"/>
+        <to variable="ClienteServices" query="/ns3:ClientService/ns3:channel"/>
+      </copy>
+      <copy>
+        <from expression="'PE'"/>
+        <to variable="ClienteServices" query="/ns3:ClientService/ns3:country"/>
+      </copy>
+    </assign>
+    <scope name="Scope_P1001_ValidarLoginEmpleado"
+           variableAccessSerializable="no">
+      <faultHandlers>
+        <catchAll>
+          <sequence>
+            <assign name="Preparar_Fault">
+              <copy>
+                <from expression="'1'"/>
+                <to variable="SiteFault"/>
+              </copy>
+            </assign>
+            <throw name="Lanzar_Fault" faultName="ns1:FaultMsg"
+                   faultVariable="FaultVar"/>
+          </sequence>
+        </catchAll>
+      </faultHandlers>
+      <sequence name="Sequence1">
+        <assign name="Pre_Invoke_P1001_ClienteService">
+          <copy>
+            <from variable="ClienteServices"/>
+            <to variable="Invoke_P1001_ValidarLoginEmpleado_ListaempleadosLoginValidarOp_InputVariable"
+                part="clienteService"/>
+          </copy>
+        </assign>
+        <assign name="Pre_Invoke_P1001_ValidarLoginEmpleado">
+          <copy>
+            <from variable="inputVariable"
+                  part="ListaempleadosEmpleadoLoginValidarReqParam"
+                  query="/ns4:ListaempleadosEmpleadoLoginValidarReqParam/ns4:usuario"/>
+            <to variable="Invoke_P1001_ValidarLoginEmpleado_ListaempleadosLoginValidarOp_InputVariable"
+                part="ListaempleadosLoginValidarReqParam"
+                query="/ns5:ListaempleadosLoginValidarReqParam/ns5:usuario"/>
+          </copy>
+          <copy>
+            <from variable="inputVariable"
+                  part="ListaempleadosEmpleadoLoginValidarReqParam"
+                  query="/ns4:ListaempleadosEmpleadoLoginValidarReqParam/ns4:clave"/>
+            <to variable="Invoke_P1001_ValidarLoginEmpleado_ListaempleadosLoginValidarOp_InputVariable"
+                part="ListaempleadosLoginValidarReqParam"
+                query="/ns5:ListaempleadosLoginValidarReqParam/ns5:clave"/>
+          </copy>
+        </assign>
+        <invoke name="Invoke_P1001_ValidarLoginEmpleado"
+                bpelx:invokeAsDetail="no"
+                inputVariable="Invoke_P1001_ValidarLoginEmpleado_ListaempleadosLoginValidarOp_InputVariable"
+                outputVariable="Invoke_P1001_ValidarLoginEmpleado_ListaempleadosLoginValidarOp_OutputVariable"
+                partnerLink="P1001_ValidarLoginEmpleado"
+                portType="ns2:ListaempleadosLoginValidarPt"
+                operation="ListaempleadosLoginValidarOp"/>
+        <assign name="Post_Invoke_P1001_ValidarLoginEmpleado">
+          <copy>
+            <from variable="Invoke_P1001_ValidarLoginEmpleado_ListaempleadosLoginValidarOp_OutputVariable"
+                  part="ListaempleadosLoginValidarRespParam"
+                  query="/ns6:ListaempleadosLoginValidarRespParam/ns6:RespuestaValidacion/ns6:estadoUsuario"/>
+            <to variable="outputVariable"
+                part="ListaempleadosEmpleadoLoginValidarRespParam"
+                query="/ns7:ListaempleadosEmpleadoLoginValidarRespParam/ns7:RespuestaValidacion/ns7:estadoUsuario"/>
+          </copy>
+          <copy>
+            <from variable="Invoke_P1001_ValidarLoginEmpleado_ListaempleadosLoginValidarOp_OutputVariable"
+                  part="ListaempleadosLoginValidarRespParam"
+                  query="/ns6:ListaempleadosLoginValidarRespParam/ns6:Retorno/ns6:codigo"/>
+            <to variable="outputVariable"
+                part="ListaempleadosEmpleadoLoginValidarRespParam"
+                query="/ns7:ListaempleadosEmpleadoLoginValidarRespParam/ns7:Retorno/ns7:codigo"/>
+          </copy>
+          <copy>
+            <from variable="Invoke_P1001_ValidarLoginEmpleado_ListaempleadosLoginValidarOp_OutputVariable"
+                  part="ListaempleadosLoginValidarRespParam"
+                  query="/ns6:ListaempleadosLoginValidarRespParam/ns6:Retorno/ns6:descripcion"/>
+            <to variable="outputVariable"
+                part="ListaempleadosEmpleadoLoginValidarRespParam"
+                query="/ns7:ListaempleadosEmpleadoLoginValidarRespParam/ns7:Retorno/ns7:descripcion"/>
+          </copy>
+        </assign>
+      </sequence>
+    </scope>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="listaempleadosempleadologinvalidarservice_client" portType="ns1:ListaempleadosEmpleadoLoginValidarPt" operation="ListaempleadosEmpleadoLoginValidarOp" variable="outputVariable"/>
+  </sequence>
+</process>

@@ -1,0 +1,63 @@
+<definitions targetNamespace="http://mdwcorp.falabella.com/CORP/PE/OSB/wsdl/Listaempleados/Login/Validar-v1.0" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://mdwcorp.falabella.com/CORP/PE/OSB/wsdl/Listaempleados/Login/Validar-v1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice" xmlns:fault="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Req-v2016.04" xmlns:resp="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Resp-v2016.04">
+
+	<types>
+		<xsd:schema>
+			<xsd:import schemaLocation="../Schemas/CORP_PE_OSB_Listaempleados_Login_ValidarReq.xsd" namespace="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Req-v2016.04"/>
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import schemaLocation="../Schemas/CORP_PE_OSB_Listaempleados_Login_ValidarResp.xsd" namespace="http://mdwcorp.falabella.com/CORP/PE/OSB/schema/Listaempleados/Login/Validar/Resp-v2016.04"/>
+		</xsd:schema>
+
+		<xsd:schema>
+			<xsd:import schemaLocation="../Schemas/MdwCorp_Common_clientService.xsd" namespace="http://mdwcorp.falabella.com/common/schema/clientservice"/>
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import schemaLocation="../Schemas/MdwCorp_Common_soapFault.xsd" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+		</xsd:schema>
+	</types>
+
+	<message name="ListaempleadosLoginValidarMsgReq">
+		<part name="ListaempleadosLoginValidarReqParam" element="req:ListaempleadosLoginValidarReqParam"/>
+                <part name="clienteService" element="cs:ClientService"/>
+	</message>
+
+	<message name="ListaempleadosLoginValidarMsgResp">
+		<part name="ListaempleadosLoginValidarRespParam" element="resp:ListaempleadosLoginValidarRespParam"/>
+	</message>
+
+	<message name="FaultMsg">
+		<part name="FaultMsg" element="fault:Fault"/>
+	</message>
+	
+	<portType name="ListaempleadosLoginValidarPt">
+		<operation name="ListaempleadosLoginValidarOp">
+			<input message="tns:ListaempleadosLoginValidarMsgReq"/>
+			<output message="tns:ListaempleadosLoginValidarMsgResp"/>
+			<fault message="tns:FaultMsg" name="FaultMsg"/>
+		</operation>
+	</portType>
+
+	<binding name="ListaempleadosLoginValidarBinding" type="tns:ListaempleadosLoginValidarPt">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="ListaempleadosLoginValidarOp">
+			<soap:operation style="document" soapAction="http://mdwcorp.falabella.com/CORP/PE/OSB/wsdl/Listaempleados/Login/Validar-v1.0/Op"/>
+			<input>
+				<soap:body use="literal" parts="ListaempleadosLoginValidarReqParam"/>
+				<soap:header message="tns:ListaempleadosLoginValidarMsgReq" use="literal" part="clienteService"/>
+			</input>
+			<output>
+				<soap:body use="literal" parts="ListaempleadosLoginValidarRespParam"/>
+			</output>
+			<fault name="FaultMsg">
+				<soap:fault name="FaultMsg" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+
+	<service name="ListaempleadosLoginValidarService">
+		<port name="ListaempleadosLoginValidarPort" binding="tns:ListaempleadosLoginValidarBinding">
+			<soap:address location="http://localhost:7001/Listaempleados/Login/Validar/v1.0"/>
+		</port>
+	</service>
+
+</definitions>
